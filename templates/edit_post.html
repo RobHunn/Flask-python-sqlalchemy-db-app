@@ -3,21 +3,33 @@ content %}
 <form id="usrform" method="POST" action="/post/edit/{{post.id}}">
 	<label for="author">Author</label>
 	<input
+		class="form-control"
 		id="author"
 		name="author"
 		type="text"
 		placeholder="{{post.author}}"
 	/>
 	<label for="title">Title</label>
-	<input id="title" name="title" type="text" placeholder="{{post.title}}" />
+	<input
+		class="form-control"
+		id="title"
+		name="title"
+		type="text"
+		placeholder="{{post.title}}"
+	/>
 	{% for prompt in prompts %}
 	<p>
 		{{ prompt }}:
-		<input placeholder="Enter Text" type="text" name="{{ prompt }}" />
+		<input
+			class="form-control"
+			placeholder="Enter Text"
+			type="text"
+			name="{{ prompt }}"
+		/>
 	</p>
 	{% endfor %}
 	<p>Story to edit: {{post.text}}</p>
 	<input type="hidden" name="post.story_id" value="{{post.story_id}}" />
-	<button>Submit</button>
+	<button class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}
