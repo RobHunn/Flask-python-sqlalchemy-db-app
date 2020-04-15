@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% block title %} All Posts {%
+endblock %}
 <div class="row row-cols-3">
 	{% for post in all_posts %}
 	<div
