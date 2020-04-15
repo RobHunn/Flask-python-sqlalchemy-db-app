@@ -49,6 +49,12 @@ def ask_questions():
                            prompts=prompts)
 
 
+@app.route("/posts")
+def show_posts():
+    all_posts = Madlib.query.order_by(Madlib.date_posted).all()
+    return render_template('post.html', all_posts=all_posts)
+
+
 @app.route("/story")
 def show_story():
     """Show story result."""
@@ -76,7 +82,7 @@ def delete_post(post_id):
     bye = Madlib.query.get_or_404(post_id)
     db.session.delete(bye)
     db.session.commit()
-    return redirect('/')
+    return redirect('/posts')
 
 
 @app.route('/post/edit/<int:post_id>', methods=['GET', 'POST'])
@@ -88,7 +94,7 @@ def edit_post(post_id):
         story = stories[post_to_edit.story_id]
         post_to_edit.text = story.generate(request.form)
         db.session.commit()
-        return redirect('/')
+        return redirect('/posts')
     else:
         story = stories[post_to_edit.story_id]
         prompts = story.prompts

@@ -1,15 +1,26 @@
-*{
-    color: aliceblue;
+* {
+	color: aliceblue;
 }
+html,
 body {
-
-    background-color: #212121;
+	background-color: #212121;
+	height: 100%;
 }
 
 footer {
 	background-color: #505050;
 }
 
-.sty button{
-    color: black;
+.sty button {
+	color: black;
+}
+
+#sticky-footer {
+	position: fixed !important;
+	left: 0 !important;
+	bottom: 0 !important;
+	width: 100% !important;
+	color: white !important;
+	text-align: center !important;
+	margin: auto !important;
 }

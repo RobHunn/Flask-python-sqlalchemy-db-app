@@ -1,27 +1,25 @@
 {% extends 'base.html' %} {% block title %} Select a Story bitch {% endblock %}
 {% block content %}
 
-<h1>Madlibs</h1>
-<form action="/questions">
-	<select name="story_id">
-		{% for story in stories %}
-		<option value="{{ story.code }}">
-			{{ story.title }}
-		</option>
-		{% endfor %}
-	</select>
-	<button>Go</button>
-</form>
-
-<h6>Lates Posts</h6>
-{% for post in all_posts %}
-<p>Post Author: {{post.author}}</p>
-<p>Post Id: {{post.id}}</p>
-<p>StoryId: {{post.story_id}}</p>
-<p>Title: {{post.title}}</p>
-<p>{{post.text}}</p>
-<p>Date posted: {{post.date_posted}}</p>
-<a href="/post/delete/{{post.id}}">Delete</a>
-<a href="/post/edit/{{post.id}}">Edit</a>
-<hr />
-{% endfor %} {% endblock %}
+<div class="jumbotron mt-5">
+	<h1 class="display-4 text-dark">Madlibs</h1>
+	<p class="lead text-dark">
+		Welcome to Madlibs, this site is built with flask, restful python API
+		with full crud. Utilizing sqlalchemy and sqlite database. Bootstrapped
+		UI fopr your viewing pleasure...
+	</p>
+	<hr class="my-4" />
+	<form action="/questions">
+		<label class="text-dark" for="story_id">Quick madlibs creation</label>
+		<br />
+		<select id="story_id" class="text text-dark" name="story_id">
+			{% for story in stories %}
+			<option value="{{ story.code }}">
+				{{ story.title }}
+			</option>
+			{% endfor %}
+		</select>
+		<button class="btn btn-primary">Go</button>
+	</form>
+</div>
+{% endblock %}
